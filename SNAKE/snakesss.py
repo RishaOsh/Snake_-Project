@@ -1,41 +1,54 @@
 from rgbhsl import intRGB
 from pygame.draw import *
 
-x = [0, 10, 20, 30]
-y = [0, 10, 20, 30]
-H = [0, 10, 20, 30]
+#Переменные змейки координты x y и цвет H
+class snake:
+    x = [15, 12, 9, 6, 3]
+    y = [15, 12, 9, 6, 3]
+    H = [0, 10, 20, 30, 40]
 
-snake = x, y, H
+
+def snake0(snake):
+    snake.x = [15, 12, 9, 6, 3]
+    snake.y = [15, 12, 9, 6, 3]
+    snake.H = [0, 10, 20, 30, 40]
+
 
 
 def snake_move(snake, mx, my): #отвечает за перемещение мышки в заданные координаты
-    x, y, H = snake
-    nstep = 5
-    rx = - x[0] + mx
-    ry = - y[0] + my
+    nstep = 4
+    rx = - snake.x[0] + mx
+    ry = - snake.y[0] + my
     step = ((rx**2 + ry**2)**0.5)/nstep
-    x = [(x[0] + rx/step)] + x
-    x.pop()
-    y = [(y[0] + ry / step)] + y
-    y.pop()
-    H = [(H [0] + 10) % 360] + H
-    H.pop()
-    return x, y, H
+    snake.x = [(snake.x[0] + rx/step)] + snake.x
+    snake.x.pop()
+    snake.y = [(snake.y[0] + ry / step)] + snake.y
+    snake.y.pop()
+    snake.H = [(snake.H [0] + 10) % 360] + snake.H
+    snake.H.pop()
+
 
 def snake_draw(snake, screen):
-    x, y, H = snake
-    for i in range(0, len(x)- 1):
-        circle(screen, intRGB(H[i]), (x[i], y[i]), 5)
+    for i in range(0, len(snake.x)- 1):
+        circle(screen, intRGB(snake.H[i]), (snake.x[i], snake.y[i]), 5)
 
 def snake_long(snake, n):
-    x, y, H = snake
     if n > 0:
         for i in range(n):
-            x = [x[0]] + x
-            y = [y[0]] + y
-            H = [H[0]] + H
+            snake.x = [snake.x[0]] + snake.x
+            snake.y = [snake.y[0]] + snake.y
+            snake.H = [snake.H[0]] + snake.H
     elif n < 0:
         for i in range(abs(n)):
-            x.pop()
-            y.pop()
-            H.pop()
+            snake.x.pop()
+            snake.y.pop()
+            snake.H.pop()
+
+def dead(snake):
+    ret = False
+    for i in range(2, len(snake.x)):
+        if (snake.x[i] - snake.x[0])**2 + (snake.y[i] - snake.y[0])**2 < 5:
+            ret = True
+    if (snake.x[0] > 400) or (snake.x[0] < 0) or (snake.y[0] > 400) or (snake.y[0] < 0): 
+        ret = True       
+    return ret
