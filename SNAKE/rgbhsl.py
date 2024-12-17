@@ -1,4 +1,7 @@
 from math import *
+
+#мат.функция которая переводит цвета из RGB в HSL
+
 def color(H, n):
     L = 0.5
     S = 1
@@ -16,4 +19,3 @@ def RGB(H):
 def intRGB(H):
     return list(map(lambda x: int(255*x), RGB(H)))
 
-print(RGB(120))

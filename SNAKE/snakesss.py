@@ -28,11 +28,11 @@ def snake_move(snake, mx, my): #отвечает за перемещение м�
     snake.H.pop()
 
 
-def snake_draw(snake, screen):
+def snake_draw(snake, screen): #отображение змейки
     for i in range(0, len(snake.x)- 1):
         circle(screen, intRGB(snake.H[i]), (snake.x[i], snake.y[i]), 5)
 
-def snake_long(snake, n):
+def snake_long(snake, n): #увеличивать или умеьшать линну змейки
     if n > 0:
         for i in range(n):
             snake.x = [snake.x[0]] + snake.x
