@@ -1,5 +1,6 @@
 import pygame
 from pygame.draw import *
+
 pygame.init()
 
 TEXTHEAD = pygame.font.SysFont(pygame.font.get_default_font(), 30)
@@ -15,14 +16,19 @@ def menu_screen_draw():
     menu.blit(press_to_start, (145, 170))
     return menu
 
-def menu_quit():
-    GAME_STAGE = 1
+
+FPS = 30
+screen = pygame.display.set_mode((400, 400))
+
+screen.blit(menu_screen_draw(), (0, 0))
+pygame.display.update()
+clock = pygame.time.Clock()
+finished = False
+
+while not finished:
+    clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            GAME_STAGE = 0
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            xm = event.pos[0]
-            ym = event.pos[1]
-            GAME_STAGE = 2
+            finished = True
 
-        return GAME_STAGE
+pygame.quit()
