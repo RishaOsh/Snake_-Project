@@ -6,7 +6,9 @@ from snakesss import snake_move, snake_draw, dead, dead, snake0
 from snakesss import snake
 from fooddd import iffood, food0, drawfood
 from fooddd import food
-from Menuscreen import *
+
+from startgame import *
+from gameover import *
 
 global GAME_STAGE #Переменная отвечающая за этап игры "Menu" "Game" "Game over" "Exit"
 GAME_STAGE = "Menu"
@@ -30,7 +32,7 @@ while not finished:
         food0(food)
         snake0(snake)
         ####
-        screen.blit(menu_screen_draw(), (0, 0))
+        screen.blit(menuscreen(), (0, 0))
         ### 
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
@@ -49,7 +51,7 @@ while not finished:
                 xmouse = event.pos[0]
                 ymouse = event.pos[1]
 
-        rect(screen, (0, 0, 0), (0, 0, 400, 400))
+        rect(screen, (255, 255, 255), (0, 0, 400, 400))
         snake_move(snake, xmouse, ymouse)
         snake_draw(snake, screen)
         drawfood(food, screen)
@@ -62,9 +64,8 @@ while not finished:
         
 
     if GAME_STAGE == "Game over": #Окно Смерти
-        #Рисует финальный экран. Реагирует на клики.
-        #screen.blit(menu_screen_draw(), (0, 0)) 
-        snake_draw(snake, screen)
+        #Рисует финальный экран. Реагирует на клики. 
+        screen.blit(game_over(('Score: '+ str(snake.score))), (0, 0))
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
                 GAME_STAGE = "Exit"

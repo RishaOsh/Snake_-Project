@@ -6,12 +6,14 @@ class snake:
     x = [15, 12, 9, 6, 3]
     y = [15, 12, 9, 6, 3]
     H = [0, 10, 20, 30, 40]
+    score = 0
 
 
 def snake0(snake):
     snake.x = [15, 12, 9, 6, 3]
     snake.y = [15, 12, 9, 6, 3]
     snake.H = [0, 10, 20, 30, 40]
+    snake.score = 0 
 
 
 

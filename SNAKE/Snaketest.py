@@ -1,18 +1,28 @@
-x = [0, 10, 20, 30]
-y = [0, 10, 20, 30]
-color = [0, 10, 20, 30]
+import pygame
+from pygame.draw import *
+pygame.init()   
 
-snake = x, y, color
+#def и так далее.....
 
+#это после твоей функции
 
-def dead(snake):
-    ret = False
-    x, y, H = snake
-    for i in range(2, len(x)):
-        if (x[i] - x[0])**2 + (y[i] - y[0])**2 < 5:
-            ret = True
-    if x[0] > 200 or x[0] < 0 or y[0] > 200 or y[0] < 0: 
-        ret = True       
-    return ret
+FPS = 30
+screen = pygame.display.set_mode((400, 400))
+#screen.blit(#Называние функции#, (0, 0))
+pygame.display.update()
+clock = pygame.time.Clock()
+finished = False
 
-dead(snake)
+while not finished:
+    clock.tick(FPS)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            finished = True
+##########
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print( event.pos[0], event.pos[1])
+            circle(screen, (255,255,255), ( event.pos[0], event.pos[1]), 5)
+            pygame.display.update()
+###########
+
+pygame.quit()

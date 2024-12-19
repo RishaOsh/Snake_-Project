@@ -4,7 +4,7 @@ from math import *
 
 def color(H, n):
     L = 0.5
-    S = 1
+    S = 0.9
     a = S * min(L, 1-L)
     k = (n + (H/30)) % 12
     f = L - a * max(-1, min(k-3, 9-k, 1))

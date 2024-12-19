@@ -30,6 +30,7 @@ def iffood(snake, food): #проверка, столкнулась ли змей
             food.x[i] = randint(20,350)
             food.y[i] = randint(20,350)
             snake_long(snake, 3)
+            snake.score = snake.score + 1
 
 
 
