@@ -1,20 +1,21 @@
-import pygame # type: ignore
-from pygame.draw import * # type: ignore
+import pygame 
+from pygame.draw import * 
 pygame.init()
 
-Letras = pygame.font.SysFont(pygame.font.get_default_font(), 60)
+Letras = pygame.font.SysFont(pygame.font.get_default_font(), 60) # шрифт
 
 def game_over(puntuaje):
      juego = pygame.Surface((400,400))
      blanco = (255,255,255)
      juego.fill (blanco)
 
-     letritas = Letras.render("GAME OVER", True, (245, 70, 50))
+     letritas = Letras.render("GAME OVER", True, (245, 70, 50)) #вывод текста 
      juego.blit(letritas, (80, 170))
 
-     rectangulo = Letras.render(str(puntuaje), True, (245, 70, 50))
+     rectangulo = Letras.render(str(puntuaje), True, (245, 70, 50)) # вывод очков
      juego.blit(rectangulo, (70,250))
 
+     # Дизайн
      circle(juego, (245, 70, 50), (50, 70), 80)  
      circle(juego, (38, 174, 160), (50, 70), 40) 
      circle(juego, (38, 174, 160), (10, 142), 14)

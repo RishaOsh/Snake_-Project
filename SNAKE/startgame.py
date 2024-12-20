@@ -2,7 +2,7 @@ import pygame
 from pygame.draw import *
 pygame.init()
 
-
+#цвета
 weiß=(225,225,225)
 blau = (34, 103, 242)
 schwarc = (0, 0, 0)
@@ -16,6 +16,7 @@ def menuscreen():
     Menü = pygame.Surface((400,400))
     Menü.fill(weiß)
     
+    #вывод текста
     guten_morgen = Überschrift.render("Змейка", True, (orange))
     Menü.blit(guten_morgen, (140, 150))
     
@@ -26,7 +27,7 @@ def menuscreen():
     Menü.blit(name, (147, 219))
     
     
-
+#рисует цветочек
     circle(Menü, (dunkelblau),(200,285),15)
     circle(Menü, (dunkelblau),(170,285),15)
     circle(Menü, (dunkelblau),(160,297),15)
@@ -45,6 +46,7 @@ def menuscreen():
     circle(Menü, (weiß),(206,290),3)
     circle(Menü, (weiß),(165,290),3)
     
+    #рисует кружочки по краям
     circle(Menü, (blau), (400, 0), 100)
     
     circle(Menü, (blau), (0, 400), 70)
