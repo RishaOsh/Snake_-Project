@@ -70,8 +70,6 @@ while not finished:
             if event.type == pygame.QUIT:
                 GAME_STAGE = "Exit"
             if event.type == pygame.MOUSEBUTTONDOWN:
-                xmouse = event.pos[0]
-                ymouse = event.pos[1]
                 GAME_STAGE = "Menu"
         
         

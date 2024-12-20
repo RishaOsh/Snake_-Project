@@ -9,7 +9,7 @@ class snake:
     score = 0
 
 
-def snake0(snake):
+def snake0(snake): #приведние змейки в стартовое состояние
     snake.x = [15, 12, 9, 6, 3]
     snake.y = [15, 12, 9, 6, 3]
     snake.H = [0, 10, 20, 30, 40]
